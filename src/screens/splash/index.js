@@ -1,4 +1,13 @@
-import { View, Text, StyleSheet } from 'react-native';
+import {
+  Dimensions,
+  FlatList,
+  Image,
+  Pressable,
+  ScrollView,
+  View,
+  Text,
+  StyleSheet,
+} from 'react-native';
 import commonStyle from '../../styles/commonStyle';
 //react native gak bisa naro class
 //internal css in jsx
@@ -25,10 +34,19 @@ const style = StyleSheet.create({
   },
 });
 
-const SplashScreen = () => {
+const SplashScreen = ({ navigation }) => {
   return (
     <View style={commonStyle.bgBlue}>
-      <Text style={[commonStyle.mt, style.title]}>Fazzpay</Text>
+      <Pressable
+        onPress={() => {
+          //navigate ke login
+          //sering bug ketika terus2an diclick
+          // navigation.push('LoginScreen');
+          navigation.navigate('LoginScreen');
+        }}
+      >
+        <Text style={[commonStyle.mt, style.title]}>Fazzpay</Text>
+      </Pressable>
     </View>
   );
 };

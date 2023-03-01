@@ -13,6 +13,10 @@ const commonStyle = StyleSheet.create({
     backgroundColor: '#6379F4',
     height: '100%',
   },
+  bgWhite: {
+    backgroundColor: '#FFFFFF',
+    height: '100%',
+  },
 });
 
 export default commonStyle;
