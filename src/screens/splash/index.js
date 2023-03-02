@@ -47,6 +47,14 @@ const SplashScreen = ({ navigation }) => {
       >
         <Text style={[commonStyle.mt, style.title]}>Fazzpay</Text>
       </Pressable>
+
+      <Pressable
+        onPress={() => {
+          navigation.navigate('HomeScreen');
+        }}
+      >
+        <Text>Home</Text>
+      </Pressable>
     </View>
   );
 };

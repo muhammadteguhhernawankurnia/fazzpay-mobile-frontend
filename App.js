@@ -8,6 +8,9 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 //import screens
 import SplashScreen from './src/screens/splash';
 import LoginScreen from './src/screens/login';
+import ForgotPasswordSendEmailScreen from './src/screens/forgot-password-send-email';
+import SignUpScreen from './src/screens/signup';
+import HomeScreen from './src/screens/home';
 
 const Stack = createNativeStackNavigator();
 
@@ -25,7 +28,34 @@ function App() {
             headerShown: false,
           }}
         />
-        <Stack.Screen name='LoginScreen' component={LoginScreen} />
+        <Stack.Screen
+          name='LoginScreen'
+          component={LoginScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name='ForgotPasswordSendEmailScreen'
+          component={ForgotPasswordSendEmailScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name='SignUpScreen'
+          component={SignUpScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name='HomeScreen'
+          component={HomeScreen}
+          // options={{
+          //   headerShown: false,
+          // }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
