@@ -66,12 +66,18 @@ const HomeScreen = ({ navigation }) => {
       <View style={style.container}>
         {/* start content user */}
         <View style={style.flexRow}>
-          <View>
-            <Image
-              source={require('../../images/person-1.png')}
-              style={style.photo}
-            />
-          </View>
+          <Pressable
+            onPress={() => {
+              navigation.navigate('ProfileScreen');
+            }}
+          >
+            <View>
+              <Image
+                source={require('../../images/person-1.png')}
+                style={style.photo}
+              />
+            </View>
+          </Pressable>
           <View style={style.user}>
             <Text style={[style.title]}>Hello,</Text>
             <Text style={[style.title]}>Robert Lewandowski</Text>
@@ -190,15 +196,21 @@ const HomeScreen = ({ navigation }) => {
             }}
           >
             <Image source={require('../../images/plus.png')} />
-            <Text
-              style={{
-                fontSize: 30,
-                color: '#000',
-                fontWeight: '600',
+            <Pressable
+              onPress={() => {
+                navigation.navigate('TopUpScreen');
               }}
             >
-              Top Up
-            </Text>
+              <Text
+                style={{
+                  fontSize: 30,
+                  color: '#000',
+                  fontWeight: '600',
+                }}
+              >
+                Top Up
+              </Text>
+            </Pressable>
           </View>
         </View>
         {/* end content transfer and topup */}
@@ -227,15 +239,21 @@ const HomeScreen = ({ navigation }) => {
           >
             Transaction History
           </Text>
-          <Text
-            style={{
-              fontSize: 24,
-              color: '#6379F4',
-              fontWeight: '300',
+          <Pressable
+            onPress={() => {
+              navigation.navigate('TransactionHistoryScreen');
             }}
           >
-            See all
-          </Text>
+            <Text
+              style={{
+                fontSize: 24,
+                color: '#6379F4',
+                fontWeight: '300',
+              }}
+            >
+              See all
+            </Text>
+          </Pressable>
         </View>
         {/* end content title transaction history */}
 

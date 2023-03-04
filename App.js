@@ -15,6 +15,13 @@ import SearchReceiverScreen from './src/screens/search-receiver';
 import InputAmountScreen from './src/screens/input-amount';
 import ConfirmationScreen from './src/screens/confirmation';
 import SuccessOrFailedTransferScreen from './src/screens/success-or-failed-transfer';
+import TransactionHistoryScreen from './src/screens/transaction-history';
+
+import TopUpScreen from './src/screens/top-up';
+import ProfileScreen from './src/screens/profile';
+import PersonalInfoScreen from './src/screens/personal-info';
+import ChangePasswordScreen from './src/screens/change-password';
+import ChangePinScreen from './src/screens/change-pin';
 
 const Stack = createNativeStackNavigator();
 
@@ -84,6 +91,53 @@ function App() {
         <Stack.Screen
           name='SuccessOrFailedTransferScreen'
           component={SuccessOrFailedTransferScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name='TransactionHistoryScreen'
+          component={TransactionHistoryScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        {/* TopUp */}
+        <Stack.Screen
+          name='TopUpScreen'
+          component={TopUpScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        {/* Profile */}
+        <Stack.Screen
+          name='ProfileScreen'
+          component={ProfileScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        {/* Personal Info */}
+        <Stack.Screen
+          name='PersonalInfoScreen'
+          component={PersonalInfoScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        {/* Change Password */}
+        <Stack.Screen
+          name='ChangePasswordScreen'
+          component={ChangePasswordScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        {/* Change PIN */}
+        <Stack.Screen
+          name='ChangePinScreen'
+          component={ChangePinScreen}
           options={{
             headerShown: false,
           }}
