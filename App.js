@@ -11,6 +11,8 @@ import LoginScreen from './src/screens/login';
 import ForgotPasswordSendEmailScreen from './src/screens/forgot-password-send-email';
 import SignUpScreen from './src/screens/signup';
 import HomeScreen from './src/screens/home';
+import SearchReceiverScreen from './src/screens/search-receiver';
+import InputAmountScreen from './src/screens/input-amount';
 
 const Stack = createNativeStackNavigator();
 
@@ -52,9 +54,23 @@ function App() {
         <Stack.Screen
           name='HomeScreen'
           component={HomeScreen}
-          // options={{
-          //   headerShown: false,
-          // }}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name='SearchReceiverScreen'
+          component={SearchReceiverScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name='InputAmountScreen'
+          component={InputAmountScreen}
+          options={{
+            headerShown: false,
+          }}
         />
       </Stack.Navigator>
     </NavigationContainer>

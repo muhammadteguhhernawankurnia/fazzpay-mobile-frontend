@@ -17,6 +17,11 @@ const commonStyle = StyleSheet.create({
     backgroundColor: '#FFFFFF',
     height: '100%',
   },
+  bgBlueAndWhite: {
+    backgroundColor: '#6379F4',
+    height: '33%',
+    borderBottomStartRadius: 20,
+  },
 });
 
 export default commonStyle;
