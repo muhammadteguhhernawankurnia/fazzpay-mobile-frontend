@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
   Dimensions,
   FlatList,
@@ -9,6 +10,7 @@ import {
   View,
   Text,
   StyleSheet,
+  ToastAndroid,
 } from 'react-native';
 import commonStyle from '../../styles/commonStyle';
 
@@ -61,6 +63,33 @@ const HomeScreen = ({ navigation }) => {
   //     .then((res) => setDataUser(res.data.data))
   //     .catch((err) => console.log(err.message));
   // }, []);
+
+  const [isLoggin, setIsLoggin] = React.useState({
+    value: false,
+    data: {},
+  });
+
+  const getDataAuth = async () => {
+    try {
+      const value = await AsyncStorage.getItem('@userData');
+      if (value !== null) {
+        setIsLoggin({
+          value: true,
+          data: JSON.parse(value),
+        });
+      } else {
+        setIsLoggin({
+          value: false,
+          data: {},
+        });
+      }
+    } catch (e) {
+      // error reading value
+    }
+  };
+  React.useEffect(() => {
+    getDataAuth();
+  }, []);
   return (
     <View style={commonStyle.bgWhite}>
       <View style={style.container}>
@@ -89,7 +118,10 @@ const HomeScreen = ({ navigation }) => {
             >
               Hello,
             </Text>
-            <Text style={[style.title]}>Robert Lewandowski</Text>
+            {/* <Text style={[style.title]}>Robert Lewandowski</Text> */}
+            <Text style={[style.title]}>
+              {isLoggin.value ? isLoggin.data.user.email : ''}
+            </Text>
           </View>
           <View style={style.notification}>
             <Image
@@ -356,6 +388,15 @@ const HomeScreen = ({ navigation }) => {
           </View>
         </View>
         {/* end content card transaction history */}
+
+        <Pressable
+          onPress={() => {
+            AsyncStorage.removeItem('@userData');
+            alert('logouted');
+          }}
+        >
+          <Text>Logout</Text>
+        </Pressable>
       </View>
     </View>
   );

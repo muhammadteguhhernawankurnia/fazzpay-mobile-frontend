@@ -4,6 +4,7 @@ import * as React from 'react';
 import { View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 //import screens
 import SplashScreen from './src/screens/splash';
@@ -27,11 +28,59 @@ const Stack = createNativeStackNavigator();
 
 //navigation screens
 function App() {
+  const [isLoggin, setIsLoggin] = React.useState({
+    value: false,
+    data: {},
+  });
+  const getDataAuth = async () => {
+    try {
+      const value = await AsyncStorage.getItem('@userData');
+      if (value !== null) {
+        setIsLoggin({
+          value: true,
+          data: JSON.parse(value),
+        });
+      } else {
+        setIsLoggin({
+          value: false,
+          data: {},
+        });
+      }
+    } catch (e) {
+      // error reading value
+    }
+  };
+  React.useEffect(() => {
+    getDataAuth();
+  }, []);
   return (
     <NavigationContainer>
       {/* initial mau tampil mana duluan */}
       {/* <Stack.Navigator initialRouteName=''> */}
       <Stack.Navigator>
+        {isLoggin.value ? (
+          <>
+            <Stack.Screen
+              name='HomeScreen'
+              component={HomeScreen}
+              options={{
+                headerShown: false,
+              }}
+            />
+            {/* <Stack.Screen name="DetailProduct" component={Detailproduct} options={{ title: 'Detail' }} />
+          <Stack.Screen name="AddProduct" component={AddProduct} options={{ title: 'Tambah Product' }} /> */}
+          </>
+        ) : (
+          <>
+            <Stack.Screen
+              name='LoginScreen'
+              component={LoginScreen}
+              options={{
+                headerShown: false,
+              }}
+            />
+          </>
+        )}
         <Stack.Screen
           name='SplashScreen'
           component={SplashScreen}
@@ -39,13 +88,13 @@ function App() {
             headerShown: false,
           }}
         />
-        <Stack.Screen
+        {/* <Stack.Screen
           name='LoginScreen'
           component={LoginScreen}
           options={{
             headerShown: false,
           }}
-        />
+        /> */}
         <Stack.Screen
           name='ForgotPasswordSendEmailScreen'
           component={ForgotPasswordSendEmailScreen}
@@ -60,13 +109,13 @@ function App() {
             headerShown: false,
           }}
         />
-        <Stack.Screen
+        {/* <Stack.Screen
           name='HomeScreen'
           component={HomeScreen}
           options={{
             headerShown: false,
           }}
-        />
+        /> */}
         <Stack.Screen
           name='SearchReceiverScreen'
           component={SearchReceiverScreen}

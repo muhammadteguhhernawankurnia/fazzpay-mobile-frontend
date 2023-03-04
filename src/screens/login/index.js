@@ -1,3 +1,6 @@
+import axios from 'axios';
+import { useState } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
   View,
   Text,
@@ -5,6 +8,7 @@ import {
   TextInput,
   Button,
   Pressable,
+  ToastAndroid,
 } from 'react-native';
 import commonStyle from '../../styles/commonStyle';
 
@@ -47,6 +51,25 @@ const style = StyleSheet.create({
 });
 
 const LoginScreen = ({ navigation }) => {
+  const [formLogin, setFormLogin] = useState({
+    email: '',
+    password: '',
+  });
+  const handleLogin = () => {
+    axios({
+      url: 'http://192.168.43.63:5002/api/v1/auth/login',
+      method: 'post',
+      data: formLogin,
+    })
+      .then((res) => {
+        AsyncStorage.setItem('@userData', JSON.stringify(res.data.data));
+        ToastAndroid.show('Sukses Login.', ToastAndroid.SHORT);
+      })
+      .catch((err) => {
+        ToastAndroid.show('Gagal Login.', ToastAndroid.SHORT);
+        console.log(err.response);
+      });
+  };
   return (
     <View style={[commonStyle.bgWhite, style.container]}>
       <Text style={[style.title]}>Login</Text>
@@ -54,8 +77,15 @@ const LoginScreen = ({ navigation }) => {
         Login to your existing account to access
       </Text>
       <Text style={[style.descriptionLogin]}>all the features in FazzPay.</Text>
-      <TextInput style={style.input} placeholder='Enter your e-mail' />
       <TextInput
+        onChangeText={(text) => setFormLogin({ ...formLogin, email: text })}
+        style={style.input}
+        placeholder='Enter your e-mail'
+        keyboardType='email-address'
+        autoCapitalize='none'
+      />
+      <TextInput
+        onChangeText={(text) => setFormLogin({ ...formLogin, password: text })}
         style={style.input}
         placeholder='Enter your password'
         secureTextEntry
@@ -66,13 +96,20 @@ const LoginScreen = ({ navigation }) => {
           navigation.navigate('ForgotPasswordSendEmailScreen');
         }}
       >
-        <Text style={{ fontSize: 14, marginLeft: 250, marginBottom: 55 }}>
+        <Text
+          style={{
+            fontSize: 14,
+            marginLeft: 250,
+            marginBottom: 55,
+            color: '#6379F4',
+          }}
+        >
           Forgot password?
         </Text>
       </Pressable>
 
       <Pressable
-        onPress={() => {}}
+        onPress={handleLogin}
         style={{
           backgroundColor: '#6379F4',
           padding: 22,
