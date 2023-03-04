@@ -13,6 +13,8 @@ import SignUpScreen from './src/screens/signup';
 import HomeScreen from './src/screens/home';
 import SearchReceiverScreen from './src/screens/search-receiver';
 import InputAmountScreen from './src/screens/input-amount';
+import ConfirmationScreen from './src/screens/confirmation';
+import SuccessOrFailedTransferScreen from './src/screens/success-or-failed-transfer';
 
 const Stack = createNativeStackNavigator();
 
@@ -68,6 +70,20 @@ function App() {
         <Stack.Screen
           name='InputAmountScreen'
           component={InputAmountScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name='ConfirmationScreen'
+          component={ConfirmationScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name='SuccessOrFailedTransferScreen'
+          component={SuccessOrFailedTransferScreen}
           options={{
             headerShown: false,
           }}

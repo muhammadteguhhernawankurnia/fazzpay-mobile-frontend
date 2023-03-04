@@ -148,6 +148,7 @@ const InputAmountScreen = ({ navigation }) => {
           <Text
             style={{
               color: '#B5BDCC',
+              fontSize: 40,
             }}
           >
             0.00
@@ -170,10 +171,36 @@ const InputAmountScreen = ({ navigation }) => {
               padding: 10,
             }}
             placeholder='Add some notes'
-            secureTextEntry
           />
         </View>
         {/* end content input */}
+
+        {/* start content button continue */}
+        <Pressable
+          onPress={() => {
+            navigation.navigate('ConfirmationScreen');
+          }}
+          style={{
+            backgroundColor: '#6379F4',
+            padding: 22,
+            borderRadius: 20,
+            width: '100%',
+            marginTop: 20,
+          }}
+        >
+          <Text
+            style={{
+              color: '#ffffff',
+              fontSize: 18,
+              fontWeight: 'bold',
+              textAlign: 'center',
+            }}
+          >
+            Confirmation
+          </Text>
+        </Pressable>
+
+        {/* end content button continue */}
       </View>
     </View>
   );
