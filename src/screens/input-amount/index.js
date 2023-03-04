@@ -44,17 +44,23 @@ const InputAmountScreen = ({ navigation }) => {
         {/* start content find receiver */}
         <View style={style.flexRow}>
           <View>
-            <Image
-              source={require('../../images/arrow-left-white.png')}
-              style={{
-                width: 40,
-                height: 40,
-                margin: 10,
-                borderRadius: 20,
-                justifyContent: 'center',
-                alignItems: 'center',
+            <Pressable
+              onPress={() => {
+                navigation.navigate('SearchReceiverScreen');
               }}
-            />
+            >
+              <Image
+                source={require('../../images/arrow-left-white.png')}
+                style={{
+                  width: 40,
+                  height: 40,
+                  margin: 10,
+                  borderRadius: 20,
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}
+              />
+            </Pressable>
           </View>
           <View style={style.user}>
             <Text

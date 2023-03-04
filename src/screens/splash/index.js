@@ -9,6 +9,8 @@ import {
   StyleSheet,
 } from 'react-native';
 import commonStyle from '../../styles/commonStyle';
+import React, { useEffect } from 'react';
+
 //react native gak bisa naro class
 //internal css in jsx
 
@@ -35,6 +37,12 @@ const style = StyleSheet.create({
 });
 
 const SplashScreen = ({ navigation }) => {
+  useEffect(() => {
+    setTimeout(() => {
+      navigation.replace('LoginScreen'); // navigasi ke halaman Login setelah 5 detik
+    }, 5000);
+  }, [navigation]);
+
   return (
     <View style={commonStyle.bgBlue}>
       <Pressable
@@ -46,14 +54,6 @@ const SplashScreen = ({ navigation }) => {
         }}
       >
         <Text style={[commonStyle.mt, style.title]}>Fazzpay</Text>
-      </Pressable>
-
-      <Pressable
-        onPress={() => {
-          navigation.navigate('HomeScreen');
-        }}
-      >
-        <Text>Home</Text>
       </Pressable>
     </View>
   );

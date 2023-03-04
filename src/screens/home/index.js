@@ -79,7 +79,16 @@ const HomeScreen = ({ navigation }) => {
             </View>
           </Pressable>
           <View style={style.user}>
-            <Text style={[style.title]}>Hello,</Text>
+            <Text
+              style={{
+                fontSize: 16,
+                color: 'grey',
+                fontWeight: '400',
+                alignItems: 'center',
+              }}
+            >
+              Hello,
+            </Text>
             <Text style={[style.title]}>Robert Lewandowski</Text>
           </View>
           <View style={style.notification}>
@@ -88,6 +97,7 @@ const HomeScreen = ({ navigation }) => {
               style={{
                 height: 40,
                 width: 40,
+                marginLeft: 25,
               }}
             />
           </View>
@@ -100,13 +110,14 @@ const HomeScreen = ({ navigation }) => {
             style={{
               backgroundColor: '#6379F4',
               height: 150,
-              width: '90%',
+              width: '100%',
               borderRadius: 20,
-              margin: 10,
               display: 'flex',
               flexDirection: 'column',
               padding: 20,
               justifyContent: 'center',
+              elevation: 5,
+              shadowColor: '#000',
             }}
           >
             <Text
@@ -143,13 +154,13 @@ const HomeScreen = ({ navigation }) => {
         {/* start content transfer and topup */}
         <View
           style={{
-            // backgroundColor: '#6379F4',
+            marginTop: 10,
             height: 50,
-            width: '90%',
+            width: '100%',
             borderRadius: 10,
-            margin: 10,
             display: 'flex',
             flexDirection: 'row',
+            justifyContent: 'space-between',
           }}
         >
           <View
@@ -163,6 +174,11 @@ const HomeScreen = ({ navigation }) => {
               flexDirection: 'row',
               justifyContent: 'center',
               alignItems: 'center',
+              shadowColor: '#000',
+              shadowOffset: { width: 0, height: 2 },
+              shadowOpacity: 0.3,
+              shadowRadius: 2,
+              elevation: 3,
             }}
           >
             <Image source={require('../../images/arrow-up.png')} />
@@ -193,6 +209,11 @@ const HomeScreen = ({ navigation }) => {
               flexDirection: 'row',
               justifyContent: 'center',
               alignItems: 'center',
+              shadowColor: '#000',
+              shadowOffset: { width: 0, height: 2 },
+              shadowOpacity: 0.3,
+              shadowRadius: 2,
+              elevation: 3,
             }}
           >
             <Image source={require('../../images/plus.png')} />
@@ -218,16 +239,14 @@ const HomeScreen = ({ navigation }) => {
         {/* start content title transaction history */}
         <View
           style={{
-            // backgroundColor: '#6379F4',
             height: 50,
             width: '90%',
             borderRadius: 10,
-            margin: 10,
-            padding: 10,
+            marginTop: 40,
+            marginLeft: 15,
             display: 'flex',
             flexDirection: 'row',
             justifyContent: 'space-between',
-            alignItems: 'center',
           }}
         >
           <Text

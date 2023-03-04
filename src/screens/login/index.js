@@ -101,6 +101,29 @@ const LoginScreen = ({ navigation }) => {
           Don’t have an account? Let’s Sign Up
         </Text>
       </Pressable>
+
+      <Pressable
+        onPress={() => {
+          navigation.navigate('HomeScreen');
+        }}
+        style={{
+          backgroundColor: '#6379F4',
+          padding: 22,
+          borderRadius: 20,
+          width: '80%',
+        }}
+      >
+        <Text
+          style={{
+            color: '#ffffff',
+            fontSize: 18,
+            fontWeight: 'bold',
+            textAlign: 'center',
+          }}
+        >
+          Go to Homepage
+        </Text>
+      </Pressable>
     </View>
   );
 };

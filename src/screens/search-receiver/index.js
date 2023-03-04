@@ -44,18 +44,24 @@ const SearchReceiverScreen = ({ navigation }) => {
         {/* start content find receiver */}
         <View style={style.flexRow}>
           <View>
-            <Image
-              source={require('../../images/arrow-left.png')}
-              style={{
-                width: 40,
-                height: 40,
-                margin: 10,
-                borderRadius: 20,
-                justifyContent: 'center',
-                alignItems: 'center',
-                color: '#4D4B57',
+            <Pressable
+              onPress={() => {
+                navigation.navigate('HomeScreen');
               }}
-            />
+            >
+              <Image
+                source={require('../../images/arrow-left.png')}
+                style={{
+                  width: 40,
+                  height: 40,
+                  margin: 10,
+                  borderRadius: 20,
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  color: '#4D4B57',
+                }}
+              />
+            </Pressable>
           </View>
           <View style={style.user}>
             <Text

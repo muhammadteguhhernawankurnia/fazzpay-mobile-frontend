@@ -42,7 +42,7 @@ const SuccessOrFailedTransfer = ({ navigation }) => {
     <View style={commonStyle.bgBlueAndWhite}>
       <View style={style.container}>
         {/* start content find receiver */}
-        <View style={style.flexRow}>
+        {/* <View style={style.flexRow}>
           <View>
             <Image
               source={require('../../images/arrow-left-white.png')}
@@ -70,7 +70,7 @@ const SuccessOrFailedTransfer = ({ navigation }) => {
               Transfer Details
             </Text>
           </View>
-        </View>
+        </View> */}
         {/* end content find receiver */}
 
         {/* start content card cofirmation history */}

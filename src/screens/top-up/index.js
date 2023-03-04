@@ -10,6 +10,8 @@ import {
   Text,
   StyleSheet,
   TextInput,
+  TouchableOpacity,
+  Modal,
 } from 'react-native';
 import commonStyle from '../../styles/commonStyle';
 
@@ -38,6 +40,16 @@ const style = StyleSheet.create({
 });
 
 const TopUpScreen = ({ navigation }) => {
+  const [modalVisible, setModalVisible] = useState(false);
+
+  const onPressButton = () => {
+    setModalVisible(true);
+  };
+
+  const onCloseModal = () => {
+    setModalVisible(false);
+  };
+
   return (
     <View style={commonStyle.bgBlueAndWhite}>
       <View style={style.container}>
@@ -102,16 +114,80 @@ const TopUpScreen = ({ navigation }) => {
             }}
           >
             <View>
-              <Image
-                source={require('../../images/plus.png')}
-                style={{
-                  width: 80,
-                  height: 80,
-                  padding: 10,
-                  borderRadius: 20,
-                  backgroundColor: '#EBEEF2',
-                }}
-              />
+              <TouchableOpacity
+                // style={styles.button}
+                onPress={onPressButton}
+                activeOpacity={0.8}
+              >
+                <Image
+                  source={require('../../images/plus.png')}
+                  style={{
+                    width: 80,
+                    height: 80,
+                    padding: 10,
+                    borderRadius: 20,
+                    backgroundColor: '#EBEEF2',
+                  }}
+                />
+              </TouchableOpacity>
+              <Modal
+                visible={modalVisible}
+                animationType='fade'
+                transparent={true}
+                onRequestClose={onCloseModal}
+              >
+                <View
+                  style={{
+                    flex: 1,
+                    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}
+                >
+                  <View
+                    style={{
+                      backgroundColor: '#FFF',
+                      borderRadius: 10,
+                      padding: 20,
+                      width: '80%',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                    }}
+                  >
+                    <Text
+                      style={{
+                        fontSize: 18,
+                        fontWeight: 'bold',
+                        marginBottom: 10,
+                      }}
+                    >
+                      Ini Modal
+                    </Text>
+                    <TouchableOpacity
+                      style={{
+                        backgroundColor: '#007AFF',
+                        borderRadius: 5,
+                        height: 50,
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        marginTop: 20,
+                        paddingHorizontal: 20,
+                      }}
+                      onPress={onCloseModal}
+                      activeOpacity={0.8}
+                    >
+                      <Text
+                        style={{
+                          color: '#FFF',
+                          fontSize: 16,
+                        }}
+                      >
+                        Tutup Modal
+                      </Text>
+                    </TouchableOpacity>
+                  </View>
+                </View>
+              </Modal>
             </View>
 
             <View
