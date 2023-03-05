@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
   Dimensions,
   FlatList,
@@ -39,6 +40,54 @@ const style = StyleSheet.create({
 });
 
 const PersonalInfoScreen = ({ navigation }) => {
+  // const userId = AsyncStorage.getItem('@userData');
+  const [dataUser, setDataUser] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(
+        `http://192.168.43.63:5002/api/v1/users/3d2996f9-5912-4cf7-807e-eead1213def7`
+      )
+      // .get(
+      //   `http://192.168.43.63:5002/api/v1/users/${
+      //     isLoggin.value ? isLoggin.data.user.email : ''
+      //   }`
+      // )
+      .then((res) => {
+        console.log(res.data.data);
+        setDataUser(res.data.data);
+      })
+      .catch((err) => console.log(err.message));
+  }, [isLoggin]);
+
+  const [isLoggin, setIsLoggin] = React.useState({
+    value: false,
+    data: {},
+  });
+
+  const getDataAuth = async () => {
+    try {
+      const value = await AsyncStorage.getItem('@userData');
+      console.log(value);
+      if (value !== null) {
+        setIsLoggin({
+          value: true,
+          data: JSON.parse(value),
+        });
+      } else {
+        setIsLoggin({
+          value: false,
+          data: {},
+        });
+      }
+    } catch (e) {
+      // error reading value
+    }
+  };
+  React.useEffect(() => {
+    getDataAuth();
+  }, []);
+
   const [isEnabled, setIsEnabled] = useState(false);
 
   const toggleSwitch = () => {
@@ -157,7 +206,8 @@ const PersonalInfoScreen = ({ navigation }) => {
                   fontWeight: '700',
                 }}
               >
-                Robert
+                {/* Robert */}
+                {`${dataUser.length !== 0 ? dataUser.data.first_name : ''}`}
               </Text>
             </View>
           </View>
@@ -203,7 +253,8 @@ const PersonalInfoScreen = ({ navigation }) => {
                   fontWeight: '700',
                 }}
               >
-                Chaniago
+                {/* Chaniago */}
+                {`${dataUser.length !== 0 ? dataUser.data.last_name : ''}`}
               </Text>
             </View>
           </View>
@@ -249,7 +300,8 @@ const PersonalInfoScreen = ({ navigation }) => {
                   fontWeight: '700',
                 }}
               >
-                pewdiepie1@gmail.com
+                {/* pewdiepie1@gmail.com */}
+                {`${dataUser.length !== 0 ? dataUser.data.email : ''}`}
               </Text>
             </View>
           </View>
@@ -295,7 +347,8 @@ const PersonalInfoScreen = ({ navigation }) => {
                   fontWeight: '700',
                 }}
               >
-                +62 813-9387-7946
+                {/* +62 813-9387-7946 */}
+                {`${dataUser.length !== 0 ? dataUser.data.phone : ''}`}
               </Text>
             </View>
           </View>
@@ -303,7 +356,7 @@ const PersonalInfoScreen = ({ navigation }) => {
         {/* end 4 */}
 
         {/* manage button */}
-        <Pressable
+        {/* <Pressable
           onPress={() => {}}
           style={{
             backgroundColor: '#6379F4',
@@ -323,7 +376,7 @@ const PersonalInfoScreen = ({ navigation }) => {
           >
             Save
           </Text>
-        </Pressable>
+        </Pressable> */}
         {/* manage button */}
 
         {/* end content details */}

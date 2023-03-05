@@ -59,7 +59,7 @@ const HomeScreen = ({ navigation }) => {
   useEffect(() => {
     axios
       .get(
-        `http://192.168.43.63:5002/api/v1/users/b942d827-ca57-48b2-814d-8f578415ff1f`
+        `http://192.168.43.63:5002/api/v1/users/3d2996f9-5912-4cf7-807e-eead1213def7`
       )
       // .get(
       //   `http://192.168.43.63:5002/api/v1/users/${
@@ -195,7 +195,8 @@ const HomeScreen = ({ navigation }) => {
                 fontWeight: '500',
               }}
             >
-              +62 813-9387-7946
+              {/* +62 813-9387-7946 */}
+              {`${dataUser.length !== 0 ? dataUser.data.phone : ''}`}
             </Text>
           </View>
         </View>

@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
   Dimensions,
   FlatList,
@@ -39,11 +40,53 @@ const style = StyleSheet.create({
 });
 
 const ChangePasswordScreen = ({ navigation }) => {
-  const [isEnabled, setIsEnabled] = useState(false);
+  // const userId = AsyncStorage.getItem('@userData');
+  const [dataUser, setDataUser] = useState([]);
 
-  const toggleSwitch = () => {
-    setIsEnabled((previousState) => !previousState);
+  useEffect(() => {
+    axios
+      .get(
+        `http://192.168.43.63:5002/api/v1/users/3d2996f9-5912-4cf7-807e-eead1213def7`
+      )
+      // .get(
+      //   `http://192.168.43.63:5002/api/v1/users/${
+      //     isLoggin.value ? isLoggin.data.user.email : ''
+      //   }`
+      // )
+      .then((res) => {
+        console.log(res.data.data);
+        setDataUser(res.data.data);
+      })
+      .catch((err) => console.log(err.message));
+  }, [isLoggin]);
+
+  const [isLoggin, setIsLoggin] = React.useState({
+    value: false,
+    data: {},
+  });
+
+  const getDataAuth = async () => {
+    try {
+      const value = await AsyncStorage.getItem('@userData');
+      console.log(value);
+      if (value !== null) {
+        setIsLoggin({
+          value: true,
+          data: JSON.parse(value),
+        });
+      } else {
+        setIsLoggin({
+          value: false,
+          data: {},
+        });
+      }
+    } catch (e) {
+      // error reading value
+    }
   };
+  React.useEffect(() => {
+    getDataAuth();
+  }, []);
 
   return (
     <View style={commonStyle.bgWhite}>
@@ -128,7 +171,9 @@ const ChangePasswordScreen = ({ navigation }) => {
           }}
           placeholder='Current password'
           secureTextEntry
-        />
+        >
+          {/* {`${dataUser.length !== 0 ? dataUser.data.password : ''}`} */}
+        </TextInput>
         <TextInput
           style={{
             padding: 10,
