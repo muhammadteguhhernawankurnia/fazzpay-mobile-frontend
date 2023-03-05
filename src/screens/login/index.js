@@ -63,10 +63,10 @@ const LoginScreen = ({ navigation }) => {
     })
       .then((res) => {
         AsyncStorage.setItem('@userData', JSON.stringify(res.data.data));
-        ToastAndroid.show('Sukses Login.', ToastAndroid.SHORT);
+        ToastAndroid.show('success to login', ToastAndroid.SHORT);
       })
       .catch((err) => {
-        ToastAndroid.show('Gagal Login.', ToastAndroid.SHORT);
+        ToastAndroid.show('failed to login', ToastAndroid.SHORT);
         console.log(err.response);
       });
   };
@@ -139,7 +139,7 @@ const LoginScreen = ({ navigation }) => {
         </Text>
       </Pressable>
 
-      <Pressable
+      {/* <Pressable
         onPress={() => {
           navigation.navigate('HomeScreen');
         }}
@@ -160,7 +160,7 @@ const LoginScreen = ({ navigation }) => {
         >
           Go to Homepage
         </Text>
-      </Pressable>
+      </Pressable> */}
     </View>
   );
 };

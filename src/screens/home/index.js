@@ -389,14 +389,15 @@ const HomeScreen = ({ navigation }) => {
         </View>
         {/* end content card transaction history */}
 
-        <Pressable
+        {/* logout */}
+        {/* <Pressable
           onPress={() => {
             AsyncStorage.removeItem('@userData');
             alert('logouted');
           }}
         >
           <Text>Logout</Text>
-        </Pressable>
+        </Pressable> */}
       </View>
     </View>
   );

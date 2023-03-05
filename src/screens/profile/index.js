@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
   Dimensions,
   FlatList,
@@ -411,17 +412,24 @@ const ProfileScreen = ({ navigation }) => {
               justifyContent: 'space-between',
             }}
           >
-            <View>
-              <Text
-                style={{
-                  fontSize: 20,
-                  color: '#FF5B37',
-                  fontWeight: '700',
-                }}
-              >
-                Logout
-              </Text>
-            </View>
+            <Pressable
+              onPress={() => {
+                AsyncStorage.removeItem('@userData');
+                alert('success logout');
+              }}
+            >
+              <View>
+                <Text
+                  style={{
+                    fontSize: 20,
+                    color: '#FF5B37',
+                    fontWeight: '700',
+                  }}
+                >
+                  Logout
+                </Text>
+              </View>
+            </Pressable>
           </View>
         </View>
         {/* end 5 */}
