@@ -64,6 +64,7 @@ const LoginScreen = ({ navigation }) => {
       .then((res) => {
         AsyncStorage.setItem('@userData', JSON.stringify(res.data.data));
         ToastAndroid.show('success to login', ToastAndroid.SHORT);
+        // navigation.navigate('HomeScreen');
       })
       .catch((err) => {
         ToastAndroid.show('failed to login', ToastAndroid.SHORT);

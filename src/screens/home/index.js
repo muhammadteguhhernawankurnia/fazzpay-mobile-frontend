@@ -53,16 +53,25 @@ const style = StyleSheet.create({
 });
 
 const HomeScreen = ({ navigation }) => {
-  // const [dataUser, setDataUser] = useState([]);
+  // const userId = AsyncStorage.getItem('@userData');
+  const [dataUser, setDataUser] = useState([]);
 
-  // useEffect(() => {
-  //   axios
-  //     .get(
-  //       'http://192.168.43.63:5002/api/v1/users/b942d827-ca57-48b2-814d-8f578415ff1f'
-  //     )
-  //     .then((res) => setDataUser(res.data.data))
-  //     .catch((err) => console.log(err.message));
-  // }, []);
+  useEffect(() => {
+    axios
+      .get(
+        `http://192.168.43.63:5002/api/v1/users/b942d827-ca57-48b2-814d-8f578415ff1f`
+      )
+      // .get(
+      //   `http://192.168.43.63:5002/api/v1/users/${
+      //     isLoggin.value ? isLoggin.data.user.email : ''
+      //   }`
+      // )
+      .then((res) => {
+        console.log(res.data.data);
+        setDataUser(res.data.data);
+      })
+      .catch((err) => console.log(err.message));
+  }, [isLoggin]);
 
   const [isLoggin, setIsLoggin] = React.useState({
     value: false,
@@ -72,6 +81,7 @@ const HomeScreen = ({ navigation }) => {
   const getDataAuth = async () => {
     try {
       const value = await AsyncStorage.getItem('@userData');
+      console.log(value);
       if (value !== null) {
         setIsLoggin({
           value: true,
@@ -120,7 +130,12 @@ const HomeScreen = ({ navigation }) => {
             </Text>
             {/* <Text style={[style.title]}>Robert Lewandowski</Text> */}
             <Text style={[style.title]}>
-              {isLoggin.value ? isLoggin.data.user.email : ''}
+              {/* {isLoggin.value ? isLoggin.data.user.email : ''} */}
+              {`${
+                dataUser.length !== 0
+                  ? dataUser.data.first_name + ' ' + dataUser.data.last_name
+                  : ''
+              }`}
             </Text>
           </View>
           <View style={style.notification}>
@@ -168,7 +183,10 @@ const HomeScreen = ({ navigation }) => {
                 fontWeight: '800',
               }}
             >
-              Rp. 120.000
+              {' '}
+              {/* {isLoggin.value ? isLoggin.data.user.email : ''} */}
+              {`Rp ${dataUser.length !== 0 ? dataUser.data.balance : ''}`}
+              {/* {isLoggin.value ? isLoggin.data.user.balance : ''} */}
             </Text>
             <Text
               style={{

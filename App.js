@@ -79,6 +79,13 @@ function App() {
                 headerShown: false,
               }}
             />
+            {/* <Stack.Screen
+              name='SplashScreen'
+              component={SplashScreen}
+              options={{
+                headerShown: false,
+              }}
+            /> */}
           </>
         )}
         <Stack.Screen

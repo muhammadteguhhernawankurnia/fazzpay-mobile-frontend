@@ -1,3 +1,6 @@
+import axios from 'axios';
+import { useState, useEffect } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
   View,
   Text,
@@ -5,6 +8,7 @@ import {
   TextInput,
   Button,
   Pressable,
+  ToastAndroid,
 } from 'react-native';
 import commonStyle from '../../styles/commonStyle';
 
@@ -47,21 +51,51 @@ const style = StyleSheet.create({
 });
 
 const SignUpScreen = ({ navigation }) => {
+  const [formSignUp, setFormSignUp] = useState({
+    email: '',
+    password: '',
+  });
+
+  const handleSignUp = () => {
+    axios({
+      url: 'http://192.168.43.63:5002/api/v1/auth/register',
+      method: 'post',
+      data: formSignUp,
+    })
+      .then((res) => {
+        AsyncStorage.setItem('@userData', JSON.stringify(res.data.data));
+        ToastAndroid.show('success to sign up', ToastAndroid.SHORT);
+      })
+      .catch((err) => {
+        ToastAndroid.show('failed to sign up', ToastAndroid.SHORT);
+        console.log(err.response);
+      });
+  };
   return (
     <View style={[commonStyle.bgWhite, style.container]}>
       <Text style={[style.title]}>Sign Up</Text>
       <Text style={[style.descriptionLogin]}>
         Create your account to access FazzPay.
       </Text>
-      <TextInput style={style.input} placeholder='Enter your e-mail' />
+      {/* <TextInput style={style.input} placeholder='Enter your username' /> */}
       <TextInput
+        onChangeText={(text) => setFormSignUp({ ...formSignUp, email: text })}
+        style={style.input}
+        placeholder='Enter your e-mail'
+        keyboardType='email-address'
+        autoCapitalize='none'
+      />
+      <TextInput
+        onChangeText={(text) =>
+          setFormSignUp({ ...formSignUp, password: text })
+        }
         style={style.input}
         placeholder='Enter your password'
         secureTextEntry
       />
 
       <Pressable
-        onPress={() => {}}
+        onPress={handleSignUp}
         style={{
           backgroundColor: '#6379F4',
           padding: 22,
