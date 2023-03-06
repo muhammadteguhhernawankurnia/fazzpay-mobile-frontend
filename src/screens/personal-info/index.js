@@ -46,7 +46,8 @@ const PersonalInfoScreen = ({ navigation }) => {
   useEffect(() => {
     axios
       .get(
-        `http://192.168.43.63:5002/api/v1/users/3d2996f9-5912-4cf7-807e-eead1213def7`
+        // `http://192.168.43.63:5002/api/v1/users/3d2996f9-5912-4cf7-807e-eead1213def7`
+        `http://192.168.43.63:5002/api/v1/users/6d658c13-02fa-4057-b7e4-dd95ff74b681`
       )
       // .get(
       //   `http://192.168.43.63:5002/api/v1/users/${

@@ -71,6 +71,7 @@ const SignUpScreen = ({ navigation }) => {
         console.log(err.response);
       });
   };
+
   return (
     <View style={[commonStyle.bgWhite, style.container]}>
       <Text style={[style.title]}>Sign Up</Text>

@@ -47,7 +47,8 @@ const ProfileScreen = ({ navigation }) => {
   useEffect(() => {
     axios
       .get(
-        `http://192.168.43.63:5002/api/v1/users/3d2996f9-5912-4cf7-807e-eead1213def7`
+        // `http://192.168.43.63:5002/api/v1/users/3d2996f9-5912-4cf7-807e-eead1213def7` epul
+        `http://192.168.43.63:5002/api/v1/users/6d658c13-02fa-4057-b7e4-dd95ff74b681`
       )
       // .get(
       //   `http://192.168.43.63:5002/api/v1/users/${
@@ -446,32 +447,32 @@ const ProfileScreen = ({ navigation }) => {
         {/* end 4 */}
 
         {/* start 5 */}
-        <View>
-          <View
-            style={{
-              backgroundColor: '#E5E8ED',
-              elevation: 5,
-              shadowColor: '#000',
-              width: 0,
-              height: 2,
-              shadowOpacity: 0.25,
-              shadowRadius: 3.84,
-              height: 60,
-              width: '100%',
-              borderRadius: 10,
-              marginLeft: 0,
-              margin: 5,
-              display: 'flex',
-              flexDirection: 'row',
-              padding: 20,
-              display: 'flex',
-              justifyContent: 'space-between',
-            }}
-          >
-            <Pressable
-              onPress={() => {
-                AsyncStorage.removeItem('@userData');
-                alert('success logout');
+        <Pressable
+          onPress={() => {
+            AsyncStorage.removeItem('@userData');
+            alert('success logout');
+          }}
+        >
+          <View>
+            <View
+              style={{
+                backgroundColor: '#E5E8ED',
+                elevation: 5,
+                shadowColor: '#000',
+                width: 0,
+                height: 2,
+                shadowOpacity: 0.25,
+                shadowRadius: 3.84,
+                height: 60,
+                width: '100%',
+                borderRadius: 10,
+                marginLeft: 0,
+                margin: 5,
+                display: 'flex',
+                flexDirection: 'row',
+                padding: 20,
+                display: 'flex',
+                justifyContent: 'space-between',
               }}
             >
               <View>
@@ -485,9 +486,9 @@ const ProfileScreen = ({ navigation }) => {
                   Logout
                 </Text>
               </View>
-            </Pressable>
+            </View>
           </View>
-        </View>
+        </Pressable>
         {/* end 5 */}
 
         {/* end content details */}

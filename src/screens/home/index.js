@@ -53,13 +53,15 @@ const style = StyleSheet.create({
 });
 
 const HomeScreen = ({ navigation }) => {
-  // const userId = AsyncStorage.getItem('@userData');
+  const userId = AsyncStorage.getItem('@userData');
   const [dataUser, setDataUser] = useState([]);
 
   useEffect(() => {
     axios
       .get(
-        `http://192.168.43.63:5002/api/v1/users/3d2996f9-5912-4cf7-807e-eead1213def7`
+        // `http://192.168.43.63:5002/api/v1/users/3d2996f9-5912-4cf7-807e-eead1213def7` epul
+        // `http://192.168.43.63:5002/api/v1/users/6d658c13-02fa-4057-b7e4-dd95ff74b681`
+        `http://192.168.43.63:5002/api/v1/users/${userId}`
       )
       // .get(
       //   `http://192.168.43.63:5002/api/v1/users/${
@@ -100,6 +102,7 @@ const HomeScreen = ({ navigation }) => {
   React.useEffect(() => {
     getDataAuth();
   }, []);
+
   return (
     <View style={commonStyle.bgWhite}>
       <View style={style.container}>
@@ -113,6 +116,7 @@ const HomeScreen = ({ navigation }) => {
             <View>
               <Image
                 source={require('../../images/person-1.png')}
+                // source={require('../../images/default-user.png')}
                 style={style.photo}
               />
             </View>
@@ -130,12 +134,13 @@ const HomeScreen = ({ navigation }) => {
             </Text>
             {/* <Text style={[style.title]}>Robert Lewandowski</Text> */}
             <Text style={[style.title]}>
-              {/* {isLoggin.value ? isLoggin.data.user.email : ''} */}
-              {`${
+              {isLoggin.value ? isLoggin.data.user.email : ''}
+              {/* {isLoggin.value ? isLoggin.data.user.user_id : ''} */}
+              {/* {`${
                 dataUser.length !== 0
                   ? dataUser.data.first_name + ' ' + dataUser.data.last_name
                   : ''
-              }`}
+              }`} */}
             </Text>
           </View>
           <View style={style.notification}>
@@ -185,7 +190,8 @@ const HomeScreen = ({ navigation }) => {
             >
               {' '}
               {/* {isLoggin.value ? isLoggin.data.user.email : ''} */}
-              {`Rp ${dataUser.length !== 0 ? dataUser.data.balance : ''}`}
+              {/* {`Rp ${dataUser.length !== 0 ? dataUser.data.balance : ''}`} */}
+              {`Rp ${isLoggin.length !== 0 ? isLoggin.data.balance : ''}`}
               {/* {isLoggin.value ? isLoggin.data.user.balance : ''} */}
             </Text>
             <Text
@@ -196,7 +202,7 @@ const HomeScreen = ({ navigation }) => {
               }}
             >
               {/* +62 813-9387-7946 */}
-              {`${dataUser.length !== 0 ? dataUser.data.phone : ''}`}
+              {/* {`${dataUser.length !== 0 ? dataUser.data.phone : ''}`} */}
             </Text>
           </View>
         </View>

@@ -73,6 +73,13 @@ function App() {
         ) : (
           <>
             <Stack.Screen
+              name='SplashScreen'
+              component={SplashScreen}
+              options={{
+                headerShown: false,
+              }}
+            />
+            <Stack.Screen
               name='LoginScreen'
               component={LoginScreen}
               options={{
@@ -88,13 +95,13 @@ function App() {
             /> */}
           </>
         )}
-        <Stack.Screen
+        {/* <Stack.Screen
           name='SplashScreen'
           component={SplashScreen}
           options={{
             headerShown: false,
           }}
-        />
+        /> */}
         {/* <Stack.Screen
           name='LoginScreen'
           component={LoginScreen}
