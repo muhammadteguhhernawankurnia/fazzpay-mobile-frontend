@@ -4,6 +4,9 @@ Application for simple digital wallet
 ## About The Project
 This is application for helps users to transact digitally with 5 minutes
 
+## Backend
+https://github.com/muhammadteguhhernawankurnia/fazzpay-mobile-be
+
 ## Built With:
 ### Language
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
@@ -17,7 +20,7 @@ This is application for helps users to transact digitally with 5 minutes
 ### Others
 ![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white) ![Trello](https://img.shields.io/badge/Trello-%23026AA7.svg?style=for-the-badge&logo=Trello&logoColor=white) 
 
-## Fiture Apolication
+## Fiture Application
 - Simple to use
 
 ## Installation
