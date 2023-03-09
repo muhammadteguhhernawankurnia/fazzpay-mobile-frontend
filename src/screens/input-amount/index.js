@@ -151,14 +151,33 @@ const InputAmountScreen = ({ navigation }) => {
             alignItems: 'center',
           }}
         >
-          <Text
+          {/* <Text
             style={{
               color: '#B5BDCC',
               fontSize: 40,
             }}
           >
             0.00
-          </Text>
+          </Text> */}
+          <TextInput
+            style={{
+              padding: 10,
+              // width: '100%',
+              width: '40%',
+              height: 80,
+              // borderBottomWidth: 1,
+              // borderColor: '#A9A9A999',
+              marginVertical: 10,
+              padding: 10,
+              color: '#B5BDCC',
+              fontSize: 40,
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              textAlign: 'center',
+            }}
+            placeholder='0.00'
+          />
           <Text
             style={{
               color: '#7C7895',

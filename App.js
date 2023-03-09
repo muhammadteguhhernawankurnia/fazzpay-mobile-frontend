@@ -19,6 +19,7 @@ import SuccessOrFailedTransferScreen from './src/screens/success-or-failed-trans
 import TransactionHistoryScreen from './src/screens/transaction-history';
 
 import TopUpScreen from './src/screens/top-up';
+import TopUpSelectMethodScreen from './src/screens/top-up-select-method';
 import ProfileScreen from './src/screens/profile';
 import PersonalInfoScreen from './src/screens/personal-info';
 import ChangePasswordScreen from './src/screens/change-password';
@@ -67,8 +68,6 @@ function App() {
                 headerShown: false,
               }}
             />
-            {/* <Stack.Screen name="DetailProduct" component={Detailproduct} options={{ title: 'Detail' }} />
-          <Stack.Screen name="AddProduct" component={AddProduct} options={{ title: 'Tambah Product' }} /> */}
           </>
         ) : (
           <>
@@ -169,6 +168,13 @@ function App() {
         <Stack.Screen
           name='TopUpScreen'
           component={TopUpScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name='TopUpSelectMethodScreen'
+          component={TopUpSelectMethodScreen}
           options={{
             headerShown: false,
           }}

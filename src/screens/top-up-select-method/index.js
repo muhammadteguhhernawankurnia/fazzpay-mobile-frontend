@@ -39,7 +39,7 @@ const style = StyleSheet.create({
   },
 });
 
-const TopUpScreen = ({ navigation }) => {
+const TopUpSelectMethodScreen = ({ navigation }) => {
   const [modalVisible, setModalVisible] = useState(false);
 
   const onPressButton = () => {
@@ -57,7 +57,7 @@ const TopUpScreen = ({ navigation }) => {
         <View style={style.flexRow}>
           <Pressable
             onPress={() => {
-              navigation.navigate('HomeScreen');
+              navigation.navigate('TopUpScreen');
             }}
           >
             <View>
@@ -85,7 +85,7 @@ const TopUpScreen = ({ navigation }) => {
                 alignItems: 'center',
               }}
             >
-              Top Up
+              Select Method to Top Up
             </Text>
           </View>
         </View>
@@ -98,49 +98,176 @@ const TopUpScreen = ({ navigation }) => {
               backgroundColor: '#FFFFFF',
               elevation: 5,
               shadowColor: '#000',
-              width: 0,
-              height: 2,
               shadowOpacity: 0.25,
               shadowRadius: 3.84,
-              height: 120,
+              height: 300,
               width: '100%',
               borderRadius: 10,
-              marginLeft: 0,
-              margin: 10,
               display: 'flex',
               flexDirection: 'row',
-              padding: 20,
-              //   justifyContent: 'space-evenly',
             }}
           >
-            <View>
-              {/* <TouchableOpacity
-                // style={styles.button}
-                onPress={onPressButton}
-                activeOpacity={0.8}
-              > */}
-              <Pressable
-                onPress={() => {
-                  navigation.navigate('TopUpSelectMethodScreen');
+            <View
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                marginLeft: 20,
+              }}
+            >
+              {/* start 6 */}
+              <View
+                style={{
+                  shadowColor: '#000',
+                  height: 45,
+                  width: '100%',
+                  display: 'flex',
+                  flexDirection: 'row',
+                  //   padding: 10,
+                  borderBottomWidth: 1,
+                  borderBottomColor: 'black',
                 }}
               >
-                <Image
-                  source={require('../../images/plus.png')}
+                <View>
+                  <Image
+                    source={require('../../images/emok.png')}
+                    style={{
+                      width: 60,
+                      height: 40,
+                      display: 'flex',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                    }}
+                  />
+                </View>
+
+                <View
                   style={{
-                    width: 80,
-                    height: 80,
-                    padding: 10,
-                    borderRadius: 20,
-                    backgroundColor: '#EBEEF2',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    // justifyContent: 'center',
+                    marginLeft: 5,
+                    marginTop: 10,
                   }}
-                />
-              </Pressable>
-              {/* </TouchableOpacity> */}
-              {/* <Modal
+                >
+                  <Text
+                    style={{
+                      fontSize: 20,
+                      color: '#7A7886',
+                      fontWeight: '500',
+                    }}
+                  >
+                    Bank Emok
+                  </Text>
+                </View>
+              </View>
+              {/* end 6 */}
+              {/* virtual account */}
+              <Text
+                style={{
+                  fontSize: 14,
+                  color: '#000',
+                  fontWeight: '400',
+                }}
+              >
+                Virtual Account Number
+              </Text>
+              <Text
+                style={{
+                  fontSize: 20,
+                  color: '#6379F4',
+                  fontWeight: '700',
+                  borderBottomWidth: 1,
+                  borderBottomColor: 'black',
+                  width: '100%',
+                }}
+              >
+                2389 081393877946
+              </Text>
+              {/* virtual account */}
+              {/* proses verifikasi */}
+              <Text
+                style={{
+                  fontSize: 14,
+                  color: '#6379F4',
+                  fontWeight: '400',
+                }}
+              >
+                Proses verifikasi ini membutuhkan waktu 5 menit setelah
+                pembayaran berhasil
+              </Text>
+              <Text
+                style={{
+                  fontSize: 14,
+                  color: '#000',
+                  fontWeight: '700',
+                  borderBottomWidth: 1,
+                  borderBottomColor: 'black',
+                }}
+              >
+                Hanya menerima dari Bank Emok
+              </Text>
+              {/* proses verifikasi */}
+              {/* virtual account */}
+              <Text
+                style={{
+                  fontSize: 14,
+                  color: '#000',
+                  fontWeight: '400',
+                }}
+              >
+                Nominal Top Up
+              </Text>
+              <Text
+                style={{
+                  fontSize: 40,
+                  color: '#6379F4',
+                  fontWeight: '700',
+                  width: '100%',
+                }}
+              >
+                Rp. 500.000
+              </Text>
+              {/* virtual account */}
+              {/* <Pressable
+                style={{
+                  backgroundColor: '#6379F4',
+                  borderRadius: 10,
+                  height: 40,
+                  width: '100%',
+                  marginTop: 10,
+                }}
+              > */}
+              <TouchableOpacity
+                onPress={onPressButton}
+                activeOpacity={0.8}
+                style={{
+                  backgroundColor: '#6379F4',
+                  borderRadius: 10,
+                  height: 40,
+                  width: '100%',
+                  marginTop: 10,
+                }}
+              >
+                <Text
+                  style={{
+                    color: '#ffffff',
+                    fontSize: 20,
+                    fontWeight: 'bold',
+                    padding: 5,
+                    textAlign: 'center',
+                    justifyContent: 'center',
+                    marginTop: 2,
+                  }}
+                >
+                  Konfirmasi
+                </Text>
+              </TouchableOpacity>
+              <Modal
                 visible={modalVisible}
                 animationType='fade'
                 transparent={true}
-                onRequestClose={onCloseModal}
+                // onRequestClose={onCloseModal}
               >
                 <View
                   style={{
@@ -156,10 +283,25 @@ const TopUpScreen = ({ navigation }) => {
                       borderRadius: 10,
                       padding: 20,
                       width: '80%',
+                      height: 300,
                       justifyContent: 'center',
                       alignItems: 'center',
                     }}
                   >
+                    <View>
+                      <Image
+                        source={require('../../images/success.png')}
+                        style={{
+                          width: 60,
+                          height: 60,
+                          display: 'flex',
+                          justifyContent: 'center',
+                          alignItems: 'center',
+                          marginBottom: 10,
+                        }}
+                      />
+                    </View>
+
                     <Text
                       style={{
                         fontSize: 18,
@@ -167,11 +309,11 @@ const TopUpScreen = ({ navigation }) => {
                         marginBottom: 10,
                       }}
                     >
-                      Tes modal
+                      Top Up Rp. 500.000 Success
                     </Text>
                     <TouchableOpacity
                       style={{
-                        backgroundColor: '#007AFF',
+                        backgroundColor: '#6379F4',
                         borderRadius: 5,
                         height: 50,
                         justifyContent: 'center',
@@ -179,7 +321,10 @@ const TopUpScreen = ({ navigation }) => {
                         marginTop: 20,
                         paddingHorizontal: 20,
                       }}
-                      onPress={onCloseModal}
+                      // onPress={onCloseModal}
+                      onPress={() => {
+                        navigation.navigate('HomeScreen');
+                      }}
                       activeOpacity={0.8}
                     >
                       <Text
@@ -188,43 +333,17 @@ const TopUpScreen = ({ navigation }) => {
                           fontSize: 16,
                         }}
                       >
-                        Close
+                        Back to Homepage
                       </Text>
                     </TouchableOpacity>
                   </View>
                 </View>
-              </Modal> */}
-            </View>
-
-            <View
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                marginLeft: 20,
-              }}
-            >
-              <Text
-                style={{
-                  fontSize: 14,
-                  color: '#000',
-                  fontWeight: '400',
-                }}
-              >
-                Virutal Account Number
-              </Text>
-              <Text
-                style={{
-                  fontSize: 16,
-                  color: '#7A7886',
-                  fontWeight: '700',
-                }}
-              >
-                2389 081393877946
-              </Text>
+              </Modal>
+              {/* </Pressable> */}
             </View>
           </View>
         </View>
+
         {/* end content card confirmation history */}
 
         {/* start content details */}
@@ -237,10 +356,10 @@ const TopUpScreen = ({ navigation }) => {
               marginTop: 20,
             }}
           >
-            How to Top Up
+            Top Up Fazzpay
           </Text>
           {/* start amount */}
-          <View
+          {/* <View
             style={{
               backgroundColor: '#FFFFFF',
               elevation: 5,
@@ -256,20 +375,21 @@ const TopUpScreen = ({ navigation }) => {
               margin: 2,
               display: 'flex',
               flexDirection: 'row',
-              padding: 20,
+              padding: 10,
               //   justifyContent: 'space-evenly',
             }}
           >
             <View>
-              <Text
+              <Image
+                source={require('../../images/seabank.png')}
                 style={{
-                  fontSize: 20,
-                  color: '#6379F4',
-                  fontWeight: '700',
+                  width: 40,
+                  height: 40,
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
                 }}
-              >
-                1
-              </Text>
+              />
             </View>
 
             <View
@@ -287,15 +407,15 @@ const TopUpScreen = ({ navigation }) => {
                   fontWeight: '500',
                 }}
               >
-                Go to the nearest ATM or you can use E-Banking.
+                Rekening SeaBank (Direct Debit)
               </Text>
             </View>
-          </View>
+          </View> */}
 
           {/* end 1 */}
 
           {/* start 2 */}
-          <View
+          {/* <View
             style={{
               backgroundColor: '#FFFFFF',
               elevation: 5,
@@ -311,20 +431,21 @@ const TopUpScreen = ({ navigation }) => {
               margin: 2,
               display: 'flex',
               flexDirection: 'row',
-              padding: 20,
+              padding: 10,
               //   justifyContent: 'space-evenly',
             }}
           >
             <View>
-              <Text
+              <Image
+                source={require('../../images/bri.png')}
                 style={{
-                  fontSize: 20,
-                  color: '#6379F4',
-                  fontWeight: '700',
+                  width: 40,
+                  height: 40,
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
                 }}
-              >
-                2
-              </Text>
+              />
             </View>
 
             <View
@@ -342,10 +463,10 @@ const TopUpScreen = ({ navigation }) => {
                   fontWeight: '500',
                 }}
               >
-                Type your security number on the E-Banking.
+                BRI Direct Debit
               </Text>
             </View>
-          </View>
+          </View> */}
           {/* end 2 */}
 
           {/* start 3 */}
@@ -365,20 +486,20 @@ const TopUpScreen = ({ navigation }) => {
               margin: 2,
               display: 'flex',
               flexDirection: 'row',
-              padding: 20,
-              //   justifyContent: 'space-evenly',
+              padding: 10,
             }}
           >
             <View>
-              <Text
+              <Image
+                source={require('../../images/bca.jpg')}
                 style={{
-                  fontSize: 20,
-                  color: '#6379F4',
-                  fontWeight: '700',
+                  width: 40,
+                  height: 40,
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
                 }}
-              >
-                3
-              </Text>
+              />
             </View>
 
             <View
@@ -396,7 +517,7 @@ const TopUpScreen = ({ navigation }) => {
                   fontWeight: '500',
                 }}
               >
-                Select “Transfer” in the menu
+                BCA OneKlik
               </Text>
             </View>
           </View>
@@ -419,20 +540,20 @@ const TopUpScreen = ({ navigation }) => {
               margin: 2,
               display: 'flex',
               flexDirection: 'row',
-              padding: 20,
-              //   justifyContent: 'space-evenly',
+              padding: 10,
             }}
           >
             <View>
-              <Text
+              <Image
+                source={require('../../images/bsi.png')}
                 style={{
-                  fontSize: 20,
-                  color: '#6379F4',
-                  fontWeight: '700',
+                  width: 60,
+                  height: 40,
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
                 }}
-              >
-                4
-              </Text>
+              />
             </View>
 
             <View
@@ -450,7 +571,7 @@ const TopUpScreen = ({ navigation }) => {
                   fontWeight: '500',
                 }}
               >
-                Type the virtual account number that we provide you at the top.
+                Bank Syariah Indonesia (BSI)
               </Text>
             </View>
           </View>
@@ -473,20 +594,20 @@ const TopUpScreen = ({ navigation }) => {
               margin: 2,
               display: 'flex',
               flexDirection: 'row',
-              padding: 20,
-              //   justifyContent: 'space-evenly',
+              padding: 10,
             }}
           >
             <View>
-              <Text
+              <Image
+                source={require('../../images/century.jpg')}
                 style={{
-                  fontSize: 20,
-                  color: '#6379F4',
-                  fontWeight: '700',
+                  width: 60,
+                  height: 40,
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
                 }}
-              >
-                5
-              </Text>
+              />
             </View>
 
             <View
@@ -504,7 +625,7 @@ const TopUpScreen = ({ navigation }) => {
                   fontWeight: '500',
                 }}
               >
-                Type the amount of the money you want to top up.
+                Bank Century
               </Text>
             </View>
           </View>
@@ -527,20 +648,20 @@ const TopUpScreen = ({ navigation }) => {
               margin: 2,
               display: 'flex',
               flexDirection: 'row',
-              padding: 20,
-              //   justifyContent: 'space-evenly',
+              padding: 10,
             }}
           >
             <View>
-              <Text
+              <Image
+                source={require('../../images/emok.png')}
                 style={{
-                  fontSize: 20,
-                  color: '#6379F4',
-                  fontWeight: '700',
+                  width: 60,
+                  height: 40,
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
                 }}
-              >
-                6
-              </Text>
+              />
             </View>
 
             <View
@@ -558,7 +679,7 @@ const TopUpScreen = ({ navigation }) => {
                   fontWeight: '500',
                 }}
               >
-                Read the summary details
+                Bank Emok
               </Text>
             </View>
           </View>
@@ -581,20 +702,20 @@ const TopUpScreen = ({ navigation }) => {
               margin: 2,
               display: 'flex',
               flexDirection: 'row',
-              padding: 20,
-              //   justifyContent: 'space-evenly',
+              padding: 10,
             }}
           >
             <View>
-              <Text
+              <Image
+                source={require('../../images/mandiri.png')}
                 style={{
-                  fontSize: 20,
-                  color: '#6379F4',
-                  fontWeight: '700',
+                  width: 60,
+                  height: 40,
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
                 }}
-              >
-                7
-              </Text>
+              />
             </View>
 
             <View
@@ -612,14 +733,14 @@ const TopUpScreen = ({ navigation }) => {
                   fontWeight: '500',
                 }}
               >
-                Press transfer / top up
+                Bank Mandiri
               </Text>
             </View>
           </View>
           {/* end 7 */}
 
           {/* start 8 */}
-          <View
+          {/* <View
             style={{
               backgroundColor: '#FFFFFF',
               elevation: 5,
@@ -635,20 +756,21 @@ const TopUpScreen = ({ navigation }) => {
               margin: 2,
               display: 'flex',
               flexDirection: 'row',
-              padding: 20,
+              padding: 10,
               //   justifyContent: 'space-evenly',
             }}
           >
             <View>
-              <Text
+              <Image
+                source={require('../../images/other.png')}
                 style={{
-                  fontSize: 20,
-                  color: '#6379F4',
-                  fontWeight: '700',
+                  width: 60,
+                  height: 40,
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
                 }}
-              >
-                8
-              </Text>
+              />
             </View>
 
             <View
@@ -666,10 +788,10 @@ const TopUpScreen = ({ navigation }) => {
                   fontWeight: '500',
                 }}
               >
-                You can see your money in Zwallet within 3 hours.
+                Transfer Bank
               </Text>
             </View>
-          </View>
+          </View> */}
           {/* end 8 */}
         </View>
 
@@ -679,4 +801,4 @@ const TopUpScreen = ({ navigation }) => {
   );
 };
 
-export default TopUpScreen;
+export default TopUpSelectMethodScreen;
